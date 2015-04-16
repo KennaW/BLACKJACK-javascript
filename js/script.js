@@ -48,7 +48,7 @@ $(document).ready(function() {
         card.num = newNum;
         console.log("cardnum = " + card.num);
         human.cards.push(card);
-        $("#h" + i).html(human.cards[i - 1].face() + newSuit);
+        $("#h" + i).html(human.cards[i - 1].face() + newSuit).addClass((newSuit === "&hearts;" || newSuit === "&diams;") ? "red" : "");
       };
 
     }();
@@ -64,7 +64,7 @@ $(document).ready(function() {
         console.log("cardnum = " + card.num);
         computer.cards.push(card);
         console.log(computer.cards[i - 1].face());
-        $("#c" + i).html(computer.cards[i - 1].face() + newSuit);
+        $("#c" + i).html(computer.cards[i - 1].face() + newSuit).addClass((newSuit === "&hearts;" || newSuit === "&diams;") ? "red" : "");
       };
 
     }();

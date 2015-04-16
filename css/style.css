@@ -6,6 +6,10 @@ td {
   border: solid 1px #000;
 }
 
+.red {
+  color: red;
+}
+
 #card-table {
   font-size: 600%;
   text-align: center;
