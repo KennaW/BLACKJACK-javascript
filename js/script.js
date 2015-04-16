@@ -1,7 +1,7 @@
-var Hand = {
-  score: 0,
-  cards: []
-}
+// var Hand =  {
+//   score: 0,
+//   cards: []
+// }
 
 var PlayingCard = {
   num: 0,
@@ -17,35 +17,67 @@ var PlayingCard = {
     } else if (this.num === 1) {
       return "A";
     } else {
-      return "'" + this.num + "'";
+      return this.num;
     }
   }
 }
 
 var suit = [
-  "H", "C", "S", "D"
+  "&hearts;", "&clubs;", "&spades;", "&diams;"
 ];
 
 
 $(document).ready(function() {
 
   $("#new-game").click(function() {
-    var human = Object.create(Hand);
-    var computer = Object.create(Hand);
+    var human = {score: 0, cards: []};
+    var computer = {score: 0, cards: []};
 
 
     $("#new-game").hide();
     $("#hit").show();
     $("#stand").show();
 
-    var card = Object.create(PlayingCard);
-    var newNum = Math.floor((Math.random() * 13) + 1);
-    var newSuit = suit[Math.floor(Math.random()*4)];
-    card.suit = newSuit;
-    card.num = newNum;
-    human.cards.push(card);
+    var humanDeal = function() {
+      for (var i = 1; i <= 2; i++) {
+        var card = Object.create(PlayingCard);
+        var newNum = Math.floor((Math.random() * 13) + 1);
+        console.log(newNum);
+        var newSuit = suit[Math.floor(Math.random()*4)];
+        card.suit = newSuit;
+        card.num = newNum;
+        console.log("cardnum = " + card.num);
+        human.cards.push(card);
+        $("#h" + i).html(human.cards[i - 1].face() + newSuit);
+      };
 
-    debugger;
+    }();
+
+    var computerDeal = function() {
+      for (var i = 1; i <= 2; i++) {
+        var card = Object.create(PlayingCard);
+        var newNum = Math.floor((Math.random() * 13) + 1);
+        console.log(newNum);
+        var newSuit = suit[Math.floor(Math.random()*4)];
+        card.suit = newSuit;
+        card.num = newNum;
+        console.log("cardnum = " + card.num);
+        computer.cards.push(card);
+        console.log(computer.cards[i - 1].face());
+        $("#c" + i).html(computer.cards[i - 1].face() + newSuit);
+      };
+
+    }();
+
+    // var card = Object.create(PlayingCard);
+    // var newNum = Math.floor((Math.random() * 13) + 1);
+    // var newSuit = suit[Math.floor(Math.random()*4)];
+    // card.suit = newSuit;
+    // card.num = newNum;
+    // human.cards.push(card);
+    // $("#h1").html(human.cards[0].face() + newSuit);
+
+    // debugger;
 
   });
 
