@@ -1,7 +1,9 @@
-// var Hand =  {
-//   score: 0,
-//   cards: []
-// }
+var Hand =  {
+  init: function() {
+    this.score = 0;
+    this.cards = [];
+  }
+};
 
 var PlayingCard = {
   num: 0,
@@ -20,7 +22,7 @@ var PlayingCard = {
       return this.num;
     }
   }
-}
+};
 
 var suit = [
   "&hearts;", "&clubs;", "&spades;", "&diams;"
@@ -30,8 +32,10 @@ var suit = [
 $(document).ready(function() {
 
   $("#new-game").click(function() {
-    var human = {score: 0, cards: []};
-    var computer = {score: 0, cards: []};
+    var human = Object.create(Hand);
+    human.init();
+    var computer = Object.create(Hand);
+    computer.init();
 
 
     $("#new-game").hide();
@@ -55,29 +59,19 @@ $(document).ready(function() {
 
     var computerDeal = function() {
       for (var i = 1; i <= 2; i++) {
-        var card = Object.create(PlayingCard);
-        var newNum = Math.floor((Math.random() * 13) + 1);
-        console.log(newNum);
-        var newSuit = suit[Math.floor(Math.random()*4)];
-        card.suit = newSuit;
-        card.num = newNum;
-        console.log("cardnum = " + card.num);
-        computer.cards.push(card);
-        console.log(computer.cards[i - 1].face());
-        $("#c" + i).html(computer.cards[i - 1].face() + newSuit).addClass((newSuit === "&hearts;" || newSuit === "&diams;") ? "red" : "");
+        var cardC = Object.create(PlayingCard);
+        var newNumC = Math.floor((Math.random() * 13) + 1);
+        console.log("newNumC = " + newNumC);
+        var newSuitC = suit[Math.floor(Math.random()*4)];
+        cardC.suit = newSuitC;
+        cardC.num = newNumC;
+        console.log("cardC.num = " + cardC.num);
+        computer.cards.push(cardC);
+        console.log("compy face" + computer.cards[i - 1].face());
+        $("#c" + i).html(computer.cards[i - 1].face() + newSuitC).addClass((newSuitC === "&hearts;" || newSuitC === "&diams;") ? "red" : "");
       };
 
     }();
-
-    // var card = Object.create(PlayingCard);
-    // var newNum = Math.floor((Math.random() * 13) + 1);
-    // var newSuit = suit[Math.floor(Math.random()*4)];
-    // card.suit = newSuit;
-    // card.num = newNum;
-    // human.cards.push(card);
-    // $("#h1").html(human.cards[0].face() + newSuit);
-
-    // debugger;
 
   });
 
