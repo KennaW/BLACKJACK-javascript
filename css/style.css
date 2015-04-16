@@ -2,9 +2,17 @@ h1 {
   font-weight: lighter;
 }
 
-#card-table {
+td {
   border: solid 1px #000;
+}
+
+#card-table {
   font-size: 600%;
   text-align: center;
-  
+  margin: auto;
+}
+
+#hit,
+#stand {
+  display: none;
 }
